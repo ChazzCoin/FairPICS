@@ -397,7 +397,7 @@ class MainCategories:
                              "https://fueled.com/feed/", "https://www.codewall.co.uk/feed/"]
 
     @staticmethod
-    def get_main_category_names():
+    def get_main_fopic_category_names():
         test = MainCategories.__dict__.keys()
         variables = []
         for item in test:

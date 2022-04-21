@@ -1,8 +1,11 @@
-from Resources.Sources import Sources
+from fopResources.Sources import Sources
 import os
 from pathlib import Path
 import feedparser
 import random
+
+from FList import LIST
+
 
 def get_parent_directory():
     path = Path(os.getcwd())
@@ -24,9 +27,9 @@ def google_trends():
 if __name__ == '__main__':
     print(google_trends())
 
-GOOGLESOURCES = os.path.join(os.getcwd(), 'Topics/Resources/google_sources.txt')
-POPULARSOURCES = os.path.join(os.getcwd(), 'Topics/Resources/popular_sources.txt')
-RSSSOURCES = os.path.join(os.getcwd(), 'Topics/Resources/popular_sources.txt')
+GOOGLESOURCES = os.path.join(os.path.dirname(__file__), 'google_sources.txt')
+POPULARSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
+RSSSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
 
 class Resource:
     GOOGLE_SOURCES = GOOGLESOURCES
@@ -51,7 +54,7 @@ def get_resource(resource):
     """
     with open(resource, 'r') as f:
         urls = ['http://' + u.strip() for u in f.readlines()]
-        return urls
+        return LIST.scramble(urls)
 
 # def clean_resource_urls(list_of_urls):
 #     new_list = []

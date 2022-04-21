@@ -1,5 +1,5 @@
-from Futils.LOG import Log
-from Futils import LIST
+from FLog.LOGGER import Log
+from FList import LIST
 Log = Log("Fopics.Language")
 
 """

@@ -1,5 +1,5 @@
-from Topics import Language
-from Topics.Futils import DICT
+from fopUtils import Language
+from FSON import DICT
 
 def categorize(content, categories: {}):
     """
