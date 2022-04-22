@@ -74,10 +74,12 @@ class Topic:
     def build_single_main_category(self, category) -> {}:
         temp_json = {}
         for term in self.main_fopic_category_keys:
-            temp_json[term] = self.get_main_category_var(self.combine_var_name(category, term))
+            tempList = self.get_main_category_var(self.combine_var_name(category, term))
+            temp_json[term] = LIST.scramble(tempList)
             if term == "rss_feeds":
                 # -> Add Both Lists (Terms and sources)
-                temp_json[term] = temp_json[term] + Sources().master_rss_list
+                newList = temp_json[term] + Sources().master_rss_list
+                temp_json[term] = LIST.scramble(newList)
         return temp_json
 
     # -> SUB -> Build All Sub Categories into Dict {}
