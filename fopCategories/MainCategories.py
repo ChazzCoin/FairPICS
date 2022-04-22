@@ -25,7 +25,8 @@ class MainCategories:
     # -> 0. General <-
     ####################################################################################################################
     general = "General"
-    general_search_terms = ["business"]
+    general_search_terms = ["business", "government", "federal government", "white house", "politics", "global news",
+                            "news", "united states economy", "global economy", "president"]
     general_weighted_terms = {"thousand": 5, "million": 5, "billion": 5, "trillion": 5, "space": 2, "mainstream": 3, "property": 2,
                               "network": 2, "future": 2, "crowdfunding": 4, "economy": 3, "market valuation": 5, "Metrics": 5,
                               "market action": 5, "dominance": 5, "assets": 5, "Drops": 5, "Dips": 5, "value proposition": 5,

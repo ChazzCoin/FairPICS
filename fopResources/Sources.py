@@ -3,14 +3,36 @@ class Sources:
     # ------------------------------------------------> TWITTER <-------------------------------------------------------- #
     # 1. Twitter Users to Monitor
     twitter_users = ['mcuban', 'elonmusk', 'PeterLBrandt', 'CNBC', 'SJosephBurns', 'elerianm', 'IBDinvestors', 'jimcramer',
-                     'bespokeinvest', 'wsbmod', 'galgitron', 'thevrsoldier', 'glewmecorp']
+                     'bespokeinvest', 'wsbmod', 'galgitron', 'thevrsoldier', 'glewmecorp', 'DocumentingBTC',
+                     'WClementeIII', 'nic__carter', 'FT', 'AJEnglish', 'SkyNews', 'XHNews', 'AP', 'ndtv',
+                     'Gladstein', 'BTC_Archive', 'APompliano', '100trillionUSD', 'MessariCrypto', 'MartyBent', 'aantonop',
+                     'VitalikButerin', 'ErikVoorhees', 'ethereumJoseph', 'naval', 'cburniske', 'ricburton', 'IncomeSharks',
+                     'WuBlockchain', 'APompliano', 'MessariCrypto', 'woonomic', 'cz_binance', '_Checkmatey_', 'mskvsk',
+                     'TyDanielSmith', 'Girlgone_Crypto', 'EuclidAndOaks', 'davidgokhshtein', 'NYTimesKrugman',
+                     'ReformedBroker', 'planetmoney', 'Nouriel', 'izakaminska', 'freakonomics', 'umairh', 'econjared',
+                     'breakingnews', 'twitternews', 'TelegraphNews', 'RT_com', 'Newsweek', 'BBCAfrica', 'Independent',
+                     'guardiannews', 'SkyNewsBreak', 'PeterLBrandt', 'CNBC', 'SJosephBurns', 'elerianm', 'IBDinvestors',
+                     'jimcramer', 'bespokeinvest', 'wsbmod', 'galgitron', 'thevrsoldier', 'glewmecorp']
+
     twitter_users_test = ['mcuban', 'elonmusk']
     # ------------------------------------------------> REDDIT <--------------------------------------------------------- #
     # 1. Crypto Subreddit Communities to Monitor
     reddit_communities_test = ['altstreetbets']
     reddit_communities = ['altstreetbets', 'CryptoCurrency', 'CryptoCurrencies', 'CryptoMarkets', 'cryptosignals',
                           'cryptospread', 'satoshistreetbets', 'wallstreetbets', 'WallStreetbetsELITE',
-                          'deepfuckingvalue', 'stocks', 'investing', 'stockmarket']
+                          'deepfuckingvalue', 'stocks', 'investing', 'stockmarket', 'android', 'androiddev', 'androidstudio',
+                          'binance', 'bitcoin', 'ethereum', 'flarenetworks', 'iosdevelopment', 'ios', 'linux', 'python',
+                          'networking', 'programming', 'raspberry_pi', 'java', 'kotlin', 'kotlinandroid', 'learnprogramming',
+                          'iosprogramming', 'ripple', 'xrp', 'xlm', 'tech', 'technology', 'xcode', 'algotrading', 'apple',
+                          'askhistorians', 'bash', 'bitcoinmarkets', 'binanceexchange', 'coding', 'compsci', 'computerscience',
+                          'crypto_currency_news', 'daytrading', 'decentraland', 'decentralization', 'vtho', 'vthotrading',
+                          'wallstreetbets2', 'wallstreetbetselite', 'web_programming', 'webhosting', 'worldnews', 'weedstocks',
+                          'virtualreality', 'usenet', 'vechain', 'ubuntu', 'technews', 'swift', 'stocks', 'stockmarket',
+                          'selfhosted', 'science', 'safemoon', 'safemoon_news', 'satoshistreetbets', 'reefdefi', 'pythontips',
+                          'politics', 'plex', 'opensource', 'objectivec', 'oculusquest', 'onions', 'news', 'netsec',
+                          'linuxadmin', 'linux_commands', 'libertarian', 'liberal', 'learnpython', 'history', 'flarefinance',
+                          'ethdev', 'ethereumprogramming', 'entrepreneur', 'economy', 'economics', 'defi', 'dataisbeautiful',
+                          'datahoarder', 'solidity']
 
     # 2. Stock Subreddit Communities to Monitor
     stocks_reddit_communities = ['wallstreetbets', 'WallStreetbetsELITE', 'deepfuckingvalue', 'stocks', 'investing',
