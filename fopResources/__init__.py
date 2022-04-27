@@ -6,11 +6,6 @@ import random
 
 from FList import LIST
 
-
-def get_parent_directory():
-    path = Path(os.getcwd())
-    return path.parent.absolute().__str__()
-
 TRENDING_URL = 'http://www.google.com/trends/hottrends/atom/feed?pn=p1'
 
 def google_trends():

@@ -1,4 +1,4 @@
-from fopUtils import Language
+from fairNLP import Language
 from FSON import DICT
 
 def categorize(content, categories: {}):
