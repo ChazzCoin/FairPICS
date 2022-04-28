@@ -5,7 +5,7 @@ current = os.getcwd()
 
 setup(
     name='FairPICS',
-    version='1.1.2',
+    version='1.1.3',
     description='Source Provider & Topic/Category Analyzer.',
     url='https://github.com/chazzcoin/Fopics',
     author='ChazzCoin',
@@ -15,7 +15,7 @@ setup(
     package_data={
         'fopResources': ['*.txt']
     },
-    install_requires=['FCoRE>=1.0.1'],
+    install_requires=['FCoRE~=1.0.3'],
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',

@@ -51,9 +51,4 @@ def get_resource(resource):
         urls = ['http://' + u.strip() for u in f.readlines()]
         return LIST.scramble(urls)
 
-# def clean_resource_urls(list_of_urls):
-#     new_list = []
-#     for item in list_of_urls:
-#         newitem = str(item).strip()
-#         new_list.append(newitem)
-#     return new_list
+

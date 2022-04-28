@@ -2,8 +2,9 @@
 class Sources:
     # ------------------------------------------------> TWITTER <-------------------------------------------------------- #
     # 1. Twitter Users to Monitor
-    twitter_users = ['mcuban', 'elonmusk', 'PeterLBrandt', 'CNBC', 'SJosephBurns', 'elerianm', 'IBDinvestors', 'jimcramer',
-                     'bespokeinvest', 'wsbmod', 'galgitron', 'thevrsoldier', 'glewmecorp', 'DocumentingBTC',
+    twitter_users = ['mcuban', 'elonmusk', 'imbrettcooper', 'realdailywire', 'benshapiro', 'PeterLBrandt', 'CNBC',
+                     'SJosephBurns', 'elerianm', 'IBDinvestors', 'jimcramer', 'thomassowell', 'jordanbpeterson', 'govrondesantis',
+                     'bespokeinvest', 'wsbmod', 'galgitron', 'thevrsoldier', 'glewmecorp', 'DocumentingBTC', 'gladwell',
                      'WClementeIII', 'nic__carter', 'FT', 'AJEnglish', 'SkyNews', 'XHNews', 'AP', 'ndtv',
                      'Gladstein', 'BTC_Archive', 'APompliano', '100trillionUSD', 'MessariCrypto', 'MartyBent', 'aantonop',
                      'VitalikButerin', 'ErikVoorhees', 'ethereumJoseph', 'naval', 'cburniske', 'ricburton', 'IncomeSharks',
@@ -11,8 +12,7 @@ class Sources:
                      'TyDanielSmith', 'Girlgone_Crypto', 'EuclidAndOaks', 'davidgokhshtein', 'NYTimesKrugman',
                      'ReformedBroker', 'planetmoney', 'Nouriel', 'izakaminska', 'freakonomics', 'umairh', 'econjared',
                      'breakingnews', 'twitternews', 'TelegraphNews', 'RT_com', 'Newsweek', 'BBCAfrica', 'Independent',
-                     'guardiannews', 'SkyNewsBreak', 'PeterLBrandt', 'CNBC', 'SJosephBurns', 'elerianm', 'IBDinvestors',
-                     'jimcramer', 'bespokeinvest', 'wsbmod', 'galgitron', 'thevrsoldier', 'glewmecorp']
+                     'guardiannews', 'SkyNewsBreak']
 
     twitter_users_test = ['mcuban', 'elonmusk']
     # ------------------------------------------------> REDDIT <--------------------------------------------------------- #
