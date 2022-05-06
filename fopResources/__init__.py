@@ -1,6 +1,7 @@
 from fopResources.Sources import Sources
 import os
-from pathlib import Path
+import re
+import pandas
 import feedparser
 import random
 
@@ -19,12 +20,13 @@ def google_trends():
         print('ERR hot terms failed!', str(e))
         return None
 
-if __name__ == '__main__':
-    print(google_trends())
+# if __name__ == '__main__':
+#     print(google_trends())
 
 GOOGLESOURCES = os.path.join(os.path.dirname(__file__), 'google_sources.txt')
 POPULARSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
 RSSSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
+STOCKTICKERS = os.path.join(os.path.dirname(__file__), 'stocks.csv')
 
 class Resource:
     GOOGLE_SOURCES = GOOGLESOURCES
@@ -51,4 +53,34 @@ def get_resource(resource):
         urls = ['http://' + u.strip() for u in f.readlines()]
         return LIST.scramble(urls)
 
+# Load Stock Ticker List from CSV File
+def read_stock_csv():
+    df = pandas.read_csv(STOCKTICKERS)
+    return df
 
+# Parse Stock Ticker List from CSV File
+def get_stock_tickers():
+    df = read_stock_csv()
+    list_of_tickers = []
+    for ticker in df['Symbol']:
+        list_of_tickers.append(ticker)
+    return list_of_tickers
+
+def get_company_names_from_csv():
+    df = read_stock_csv()
+    list_of_companies = []
+    for name in df['Name']:
+        name = to_tokens(name)
+        one = name[0] if len(name) > 0 else ""
+        two = name[1] if len(name) > 1 else ""
+        new_name = one + " " + two
+        list_of_companies.append((one, new_name))
+    return list(set(list_of_companies))
+
+def to_tokens(text):
+    """ ALTERNATIVE: Split a string into array of words. """
+    try:
+        text = re.sub(r'[^\w ]', '', text)  # strip special chars
+        return [x.strip('.').lower() for x in text.split()]
+    except TypeError:
+        return None

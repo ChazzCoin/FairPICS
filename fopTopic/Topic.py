@@ -123,6 +123,14 @@ class Topic:
     def get_all_rss_urls(self):
         return LIST.scramble(self.get_source("master_rss_list"))
 
+    def get_all_weighted_terms(self):
+        all_weighted = {}
+        for category_name in self.main_categories.keys():
+            # -> Extract Weighted Terms from Category/SubCategory
+            weighted_terms = DICT.get("weighted_terms", self.main_categories[category_name], default=False)
+            all_weighted = DICT.lazy_merge_dicts(all_weighted, weighted_terms)
+        return all_weighted
+
     @staticmethod
     def get_main_category_var(var_name):
         """  GETTER HELPER  """
