@@ -10,6 +10,31 @@ UNSURE = "Unsure"
 UNCATEGORIZED = [UNSURE, UNKNOWN]
 
 
+def score_sentences(sentences, weighted_words):
+    scored_sentences = []
+    highest_s = 0
+    for sentence in sentences:
+        temp_score = score_content(content=sentence, weighted_words=weighted_words)
+        score = LIST.get(0, temp_score)
+        scored_sentences.append([score, sentence])
+        if score > highest_s:
+            highest_s = score
+
+    only_scored = []
+    for scored_s in scored_sentences:
+        score = LIST.get(0, scored_s)
+        if score == 0:
+            continue
+        if len(scored_sentences) <= 6 and score < highest_s - 10:
+            continue
+        only_scored.append(scored_s)
+    return only_scored
+
+def score_content(content, weighted_words):
+    word_list = Language.complete_tokenization_v2(content)
+    temp = run_matcher(word_list, weighted_words)
+    return temp
+
 def categorize(content, categories: {}):
     """
     -> Matcher_v3 under the hood, but now categorizes each topic based on topic score.

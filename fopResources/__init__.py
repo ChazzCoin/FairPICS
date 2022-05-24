@@ -25,7 +25,7 @@ def google_trends():
 
 GOOGLESOURCES = os.path.join(os.path.dirname(__file__), 'google_sources.txt')
 POPULARSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
-RSSSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
+RSSSOURCES = os.path.join(os.path.dirname(__file__), 'rss_sources.txt')
 STOCKTICKERS = os.path.join(os.path.dirname(__file__), 'stocks.csv')
 
 class Resource:
