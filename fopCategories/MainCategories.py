@@ -641,6 +641,7 @@ class MainCategories:
                             "silicon chip": MINI_WEIGHT,
                             "silicon chips": MINI_WEIGHT,
                             "apple silicon": MIDDLE_WEIGHT,
+                            "steve jobs": HIGH_WEIGHT,
                             "homepod": HIGH_WEIGHT,
                             "series": MINI_WEIGHT,
                             "xcode": MAX_WEIGHT,

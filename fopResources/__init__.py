@@ -58,6 +58,47 @@ def read_stock_csv():
     df = pandas.read_csv(STOCKTICKERS)
     return df
 
+def read_stock_csv_to_dict():
+    df = pandas.read_csv(STOCKTICKERS)
+    df_dict = df.to_dict()
+    return df_dict
+
+def build_list_of_companies(dic):
+    companies_list = []
+    # keys = Symbol, Name...
+    tickers = dic['Symbol']
+    names = dic['Name']
+    ipo_years = dic['IPO Year']
+    sectors = dic['Sector']
+    industries = dic['Industry']
+    countries = dic['Country']
+    market_caps = dic['Market Cap']
+
+    # 'IPO Year' 'Sector' 'Industry' 'Country' 'Market Cap'
+    index_count = 0
+    while index_count <= len(tickers):
+        ticker = LIST.get(index_count, tickers)
+        name = LIST.get(index_count, names)
+        ipo_year = LIST.get(index_count, ipo_years)
+        sector = LIST.get(index_count, sectors)
+        industry = LIST.get(index_count, industries)
+        country = LIST.get(index_count, countries)
+        market_cap = LIST.get(index_count, market_caps)
+
+        single_company = {
+            "ticker": ticker,
+            "name": name,
+            "ipo_year": ipo_year,
+            "sector": sector,
+            "industry": industry,
+            "country": country,
+            "market_cap": market_cap,
+        }
+        companies_list.append(single_company)
+        index_count += 1
+    return companies_list
+
+
 # Parse Stock Ticker List from CSV File
 def get_stock_tickers():
     df = read_stock_csv()
@@ -76,6 +117,14 @@ def get_company_names_from_csv():
         new_name = one + " " + two
         list_of_companies.append((one, new_name))
     return list(set(list_of_companies))
+
+# if __name__ == '__main__':
+#     test = read_stock_csv_to_dict()
+#     list_of_companies = build_list_of_companies(test)
+#     from Jarticle.jCompany import jCompany
+#     jc = jCompany.constructor_jcompany()
+#     jc.add_companies(list_of_companies)
+#     print(test)
 
 def to_tokens(text):
     """ ALTERNATIVE: Split a string into array of words. """

@@ -1,12 +1,18 @@
 
-
+MAX_WEIGHT = 200
+HIGH_WEIGHT = 130
+MIDDLE_WEIGHT = 75
+LOW_WEIGHT = 25
+MINI_WEIGHT = 10
+NANO_WEIGHT = 3
 
 class SubCategories:
 
     government = { "government": 100, "taxes": 100, "politics": 100, "politician": 100, "politicians": 100,
                    "senate": 100, "congress": 100, "house of representatives": 100, "dc": 10, "washington": 10,
                    "washington dc": 30, "capital hill": 10, "white house": 50 }
-    finance = { "finance": 100, "money": 50, "economy": 100 }
+    finance = { "finance": 100, "money": 50, "economy": 100, "supply": MIDDLE_WEIGHT, "demand": LOW_WEIGHT,
+                "supply and demand": HIGH_WEIGHT, "jobs": LOW_WEIGHT, "labor market": MIDDLE_WEIGHT }
     news = { "news": 100, "article": 100, "": 100 }
     social = { "twitter": 100, "tweet": 100, "reddit": 100 }
     engineering = { "engineering": 100, "architecture": 100, "architect": 100 }
