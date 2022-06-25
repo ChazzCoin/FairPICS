@@ -65,7 +65,7 @@ class Topic:
     def RUN_ALL_CATEGORIZER(cls, content):
         newCls = cls()
         newCls.build_main_categories()
-        return newCls.all_categorizer(content)
+        return newCls.main_categorizer(content)
 
     # -> Main -> Build All Main Categories -> Dict {}
     def build_main_categories(self, categories: [] = None):
@@ -131,10 +131,15 @@ class Topic:
         self.sources[key] = value
 
     def sub_categorizer(self, *content):
-        return Categorizer.categorize(content=content, categories=self.sub_categories)
+        return Categorizer.categorizer_layer2(content=content, categories=self.sub_categories)
 
     def main_categorizer(self, *content):
-        return Categorizer.categorize(content=content, categories=self.main_categories)
+        return Categorizer.categorizer_layer2(content=content, categories=self.main_categories)
+
+    def main_secondary_categorizer(self, topicName, *content):
+        topic = self.main_categories[topicName]
+        secondary_terms = topic["secondary_weighted_terms"]
+        return Categorizer.categorizer_layer2(content=content, categories=secondary_terms)
 
     def score_categorizer(self, sentences):
         return Categorizer.score_sentences(sentences=sentences, weighted_words=self.get_all_weighted_terms())
@@ -157,17 +162,32 @@ class Topic:
     @staticmethod
     def get_main_category_var(var_name):
         """  GETTER HELPER  """
-        return MainCategories().__getattribute__(var_name)
+        try:
+            obj = MainCategories().__getattribute__(var_name)
+            return obj
+        except Exception as e:
+            print(f"Failed to get attribute. e=[ {e} ]")
+            return []
 
     @staticmethod
     def get_sub_category_var(var_name):
         """  GETTER HELPER  """
-        return SubCategories().__getattribute__(var_name)
+        try:
+            obj = SubCategories().__getattribute__(var_name)
+            return obj
+        except Exception as e:
+            print(f"Failed to get attribute. e=[ {e} ]")
+            return []
 
     @staticmethod
     def get_source_var(var_name):
         """  GETTER HELPER  """
-        return Sources().__getattribute__(var_name)
+        try:
+            obj = Sources().__getattribute__(var_name)
+            return obj
+        except Exception as e:
+            print(f"Failed to get attribute. e=[ {e} ]")
+            return []
 
     @staticmethod
     def combine_var_name(topic, term):
@@ -180,4 +200,5 @@ if __name__ == "__main__":
     cont = "hey this is the worlds basketball dumbest content about economy business ripple and of course, the metaverse itself!!! soccer, taxes virtual real estate and all kinds of bitcoin!"
     t = Topic.ALL_CATEGORIES()
     temp = t.get_all_rss_urls()
-    print(temp)
+    score = t.main_secondary_categorizer("metaverse", cont)
+    print(score)

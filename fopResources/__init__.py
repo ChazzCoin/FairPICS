@@ -27,11 +27,20 @@ GOOGLESOURCES = os.path.join(os.path.dirname(__file__), 'google_sources.txt')
 POPULARSOURCES = os.path.join(os.path.dirname(__file__), 'popular_sources.txt')
 RSSSOURCES = os.path.join(os.path.dirname(__file__), 'rss_sources.txt')
 STOCKTICKERS = os.path.join(os.path.dirname(__file__), 'stocks.csv')
+METAVERSESOURCES = os.path.join(os.path.dirname(__file__), 'metaverse_sources.txt')
 
 class Resource:
     GOOGLE_SOURCES = GOOGLESOURCES
     POPULAR_SOURCES = POPULARSOURCES
     RSS_SOURCES = RSSSOURCES
+    METAVERSE_SOURCES = METAVERSESOURCES
+
+def get_resource(resource):
+    """Uses generator to return next useragent in saved file
+    """
+    with open(resource, 'r') as f:
+        urls = ['http://' + u.strip() for u in f.readlines()]
+        return LIST.scramble(urls)
 
 def get_random(items):
     selection = random.randint(0, len(items) - 1)
@@ -46,12 +55,15 @@ def get_popular_sources():
 def get_rss_sources():
     return get_resource(Resource.RSS_SOURCES)
 
-def get_resource(resource):
-    """Uses generator to return next useragent in saved file
-    """
-    with open(resource, 'r') as f:
-        urls = ['http://' + u.strip() for u in f.readlines()]
-        return LIST.scramble(urls)
+def get_metaverse_sources():
+    return get_resource(Resource.METAVERSE_SOURCES)
+
+def get_random_metaverse_source():
+    m_urls = get_metaverse_sources()
+    m_count = len(m_urls)
+    ran_dom = random.randint(0, m_count)
+    url = m_urls[ran_dom]
+    return url
 
 # Load Stock Ticker List from CSV File
 def read_stock_csv():

@@ -19,7 +19,7 @@ NANO_WEIGHT = 3
 
 class MainCategories:
     # -> If any lists are added, add here.
-    keys = ["search_terms", "weighted_terms", "rss_feeds"]
+    keys = ["search_terms", "weighted_terms", "rss_feeds", "secondary_weighted_terms", "url_sources"]
 
     def get_var(self, var_name):
         """  GETTER HELPER  """
@@ -374,9 +374,25 @@ class MainCategories:
     # -> X. Metaverse <-
     ####################################################################################################################
     metaverse = "Metaverse"
-    metaverse_search_terms = ["metaverse", "virtual world", "vr", "decentraland", "decentralized", "nft",
-                              "decentralized world", "augmented reality", "blockchain", "ethereum", "virtual reality"]
+    metaverse_search_terms = [
+                                "metaverse", "virtual world", "vr",
+                                 "decentraland", "decentralized", "nft",
+                                 "decentralized world", "augmented reality",
+                                 "blockchain", "ethereum", "virtual reality"
+                              ]
     metaverse_search_terms_test = ["metaverse", "virtual world", "nft"]
+
+    metaverse_secondary_weighted_terms = {
+
+        "land": MIDDLE_WEIGHT,
+        "parcel": MIDDLE_WEIGHT,
+        "virtual land": LOW_WEIGHT,
+        "real estate": LOW_WEIGHT,
+        "DAO": LOW_WEIGHT,
+        "decentralized autonomous organization": MIDDLE_WEIGHT,
+        "build": 3,
+        "building": 3
+    }
 
     metaverse_weighted_terms = {
         "0xearth": MIDDLE_WEIGHT,
@@ -533,6 +549,19 @@ class MainCategories:
         "web3 gaming": HIGH_WEIGHT,
         "web3 game": HIGH_WEIGHT
                                 }
+
+    metaverse_url_sources = [
+        "https://nftplazas.com/",
+        "https://cointelegraph.com/rss", "https://coindesk.com/feed", "https://news.bitcoin.com/feed",
+        "https://minergate.com/blog/feed/", "https://coinjournal.net/feed",
+        "https://cryptoinsider.com/feed", "http://www.newsbtc.com/feed",
+        "https://twitter.com/jaxx_io/feed", "https://bitcoinmagazine.com/feed",
+        "https://www.crypto-news.net/feed", "https://www.cryptoninjas.net/feed",
+        "https://ethereumworldnews.com/feed", "https://bravenewcoin.com/feed",
+        "http://www.financemagnates.com/feed", "http://www.cryptoquicknews.com/feed",
+        "http://cryptscout.com/feed", "http://www.coinnewsasia.com/feed"
+
+    ]
     # -> This master weighted list comes dynamically from meta_names.json
     # metaverse_weighted_terms = DICT.merge_dicts(meta_names, metaverse_weighted_custom_terms)
     metaverse_rss_feeds = [ "https://cointelegraph.com/rss", "https://coindesk.com/feed", "https://news.bitcoin.com/feed",
@@ -749,15 +778,17 @@ class MainCategories:
                                   "algo": MINI_WEIGHT
                                   }
 
-    programming_rss_feeds = ["http://www.thecrazyprogrammer.com/feed", "https://www.sitepoint.com/feed/",
-                             "https://www.raywenderlich.com/feed", "https://stackabuse.com/rss/",
-                             "https://blog.jooq.org/feed/", "http://feeds.hanselman.com/ScottHanselman",
-                             "https://tympanus.net/codrops/feed/", "https://medium.com/feed/better-programming",
-                             "https://medium.com/feed/a-technologists-pov", "https://blog.codepen.io/feed/",
-                             "https://hackr.io/programming/rss.xml", "https://www.techiedelight.com/feed/",
-                             "https://davidwalsh.name/feed", "https://codesignal.com/feed/",
-                             "https://alistapart.com/site/rss", "https://www.codingdojo.com/blog/feed",
-                             "https://fueled.com/feed/", "https://www.codewall.co.uk/feed/"]
+    programming_rss_feeds = [
+        "http://www.thecrazyprogrammer.com/feed", "https://www.sitepoint.com/feed/",
+         "https://www.raywenderlich.com/feed", "https://stackabuse.com/rss/",
+         "https://blog.jooq.org/feed/", "http://feeds.hanselman.com/ScottHanselman",
+         "https://tympanus.net/codrops/feed/", "https://medium.com/feed/better-programming",
+         "https://medium.com/feed/a-technologists-pov", "https://blog.codepen.io/feed/",
+         "https://hackr.io/programming/rss.xml", "https://www.techiedelight.com/feed/",
+         "https://davidwalsh.name/feed", "https://codesignal.com/feed/",
+         "https://alistapart.com/site/rss", "https://www.codingdojo.com/blog/feed",
+         "https://fueled.com/feed/", "https://www.codewall.co.uk/feed/"
+    ]
 
     @staticmethod
     def get_main_fopic_category_names():

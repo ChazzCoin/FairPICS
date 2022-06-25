@@ -30,34 +30,67 @@ def score_sentences(sentences, weighted_words):
         only_scored.append(scored_s)
     return only_scored
 
+
 def score_content(content, weighted_words):
     word_list = Language.complete_tokenization_v2(content)
-    temp = run_matcher(word_list, weighted_words)
+    temp = private_run_matcher(word_list, weighted_words)
     return temp
 
-def categorize(content, categories: {}):
+def categorizer_layer2(content, categories: {}):
+    # -> 1. Convert String into Token List
+    word_list = private_content_to_wordList(content)
+    # -> 2.
+    cater = categorize(content, categories)
+    highest_main_cat_name = LIST.get(0, cater)
+    highest_main_score = LIST.get(1, cater)
+    if highest_main_cat_name == UNSURE or highest_main_cat_name == UNKNOWN:
+        return cater
+    # -> 3.
+    secondary_weighted_terms = DICT.get("secondary_weighted_terms", categories[highest_main_cat_name], default=False)
+    caterLayer2 = private_run_matcher(word_list, secondary_weighted_terms)
+    second_score = LIST.get(0, caterLayer2, 0)
+    final_score = highest_main_score + second_score
+    return final_score
+
+
+def private_content_to_wordList(content):
+    # FAIR -> Completely Tokenize Words/Phrases
+    word_list = Language.complete_tokenization_v2(content)
+    return word_list
+
+""" PUBLIC -> Master Function <- """
+def categorize(word_list, categories: {}):
     """
     -> Matcher_v3 under the hood, but now categorizes each topic based on topic score.
         - Loops through each topic, scoring the article against each topic.
         - It will return a dict of every score/result per topic.
 
+        :param content -> Raw String of Words.
+                            - They will be tokenized.
+        :param categories -> All Topics and their Attributes. (search_terms, weighted_terms...)
+                            - Categorizer will extract what it needs.
+
         ::return -> tuple("str: top cat", "int: top cat score", "dict: all scored, no empties")
     """
     # FAIR -> Completely Tokenize Words/Phrases
-    word_list = Language.complete_tokenization_v2(content)
+    # word_list = Language.complete_tokenization_v2(content)
     # -> Setup
     return_dict = {}  # { "category_name": ( score, { "weighted_term": "match_count", "weighted_term": "match_count" } ) }
     # 1. -> Loop Each Category
     for category_name in categories.keys():
         # -> Extract Weighted Terms from Category/SubCategory
         weighted_terms = DICT.get("weighted_terms", categories[category_name], default=False)
+        secondary_weighted_terms = DICT.get("secondary_weighted_terms", categories[category_name], default=False)
         if not weighted_terms:
             weighted_terms = categories[category_name]
-        return_dict[category_name] = run_matcher(word_list, weighted_terms)
-    no_empty_scores = remove_empty_scores(categories, return_dict)
+        # -> Run Matcher <- #
+        return_dict[category_name] = private_run_matcher(word_list, weighted_terms)
+    no_empty_scores = private_remove_empty_scores(categories, return_dict)
     return no_empty_scores
 
-def run_matcher(word_list, weighted_terms):
+""" PRIVATE """
+def private_run_matcher(word_list, weighted_terms):
+    """ PRIVATE """
     # 2. -> Loop Each Category Weighted Term
     temp_dict = {}  # { "weighted_term": "match_count" }
     score = 0  # "weighted_term" Score * "match_count"
@@ -81,8 +114,11 @@ def run_matcher(word_list, weighted_terms):
     # -> 4. Finish Up
     return score, temp_dict  # ( score, { "weighted_term": "match_count", "weighted_term": "match_count" } )
 
-
-def remove_empty_scores(cats, all_scores):
+""" PRIVATE -> Helper Function. """
+def private_remove_empty_scores(cats, all_scores):
+    """ PRIVATE
+        -> Removes all empty scores from the categorizer to remove bloat data.
+    """
     highest_score = 0
     cat_scores = {}
     highest_topic_name = ""
