@@ -391,7 +391,10 @@ class MainCategories:
         "DAO": LOW_WEIGHT,
         "decentralized autonomous organization": MIDDLE_WEIGHT,
         "build": 3,
-        "building": 3
+        "building": 3,
+        "device": MIDDLE_WEIGHT,
+        "glasses": LOW_WEIGHT
+
     }
 
     metaverse_weighted_terms = {
@@ -414,8 +417,6 @@ class MainCategories:
         "blockchain": MIDDLE_WEIGHT,
         "bought": NANO_WEIGHT,
         "btc": 2,
-        "build": 3,
-        "building": 3,
         "centralized": LOW_WEIGHT,
         "collectible": MIDDLE_WEIGHT,
         "collectibles": MIDDLE_WEIGHT,
@@ -530,6 +531,7 @@ class MainCategories:
         "vegas city": LOW_WEIGHT,
         "victoria": LOW_WEIGHT,
         "victoria vr": MAX_WEIGHT,
+        "victoriavr": MAX_WEIGHT,
         "virtual": MIDDLE_WEIGHT,
         "virtual land": HIGH_WEIGHT,
         "virtual meeting": HIGH_WEIGHT,

@@ -40,9 +40,10 @@ def categorizer_layer2(content, categories: {}):
     # -> 1. Convert String into Token List
     word_list = private_content_to_wordList(content)
     # -> 2.
-    cater = categorize(content, categories)
+    cater = categorize(word_list, categories)
     highest_main_cat_name = LIST.get(0, cater)
     highest_main_score = LIST.get(1, cater)
+    highest_main_matches = LIST.get(2, cater)
     if highest_main_cat_name == UNSURE or highest_main_cat_name == UNKNOWN:
         return cater
     # -> 3.
@@ -50,7 +51,7 @@ def categorizer_layer2(content, categories: {}):
     caterLayer2 = private_run_matcher(word_list, secondary_weighted_terms)
     second_score = LIST.get(0, caterLayer2, 0)
     final_score = highest_main_score + second_score
-    return final_score
+    return highest_main_cat_name, final_score, highest_main_matches
 
 
 def private_content_to_wordList(content):

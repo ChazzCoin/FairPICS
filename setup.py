@@ -5,7 +5,7 @@ current = os.getcwd()
 
 setup(
     name='FairPICS',
-    version='2.0.0',
+    version='2.0.1',
     description='Source Provider & Topic/Category Analyzer.',
     url='https://github.com/chazzcoin/Fopics',
     author='ChazzCoin',
